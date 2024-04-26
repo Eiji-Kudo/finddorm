@@ -10,7 +10,7 @@ build:
 # Docker コンテナを起動する
 .PHONY: up
 up:
-	docker-compose up
+	docker-compose up --build
 
 # Docker コンテナをバックグラウンドで起動する
 .PHONY: up-detached
@@ -41,3 +41,9 @@ setup-db:
 .PHONY: test
 test:
 	docker-compose run web rake test
+
+
+# Docker コンテナ内で bash を起動する
+.PHONY: bash
+bash:
+	docker-compose run --entrypoint bash web

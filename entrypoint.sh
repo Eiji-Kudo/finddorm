@@ -11,4 +11,4 @@ if [ -f /myapp/tmp/pids/server.pid ]; then
 fi
 
 # コマンド引数で指定されたコマンド（CMD）を実行
-exec "$@"
+exec "$@" || bundle exec rails s -p 3000 -b '0.0.0.0'

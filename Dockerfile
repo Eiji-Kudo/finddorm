@@ -11,8 +11,8 @@ WORKDIR /rails
 ENV RAILS_ENV="production" \
     BUNDLE_DEPLOYMENT="1" \
     BUNDLE_PATH="/usr/local/bundle" \
-    BUNDLE_WITHOUT="development"
-
+    BUNDLE_WITHOUT="development" \
+    PATH="/usr/local/bundle/bin:$PATH"
 
 # Throw-away build stage to reduce size of final image
 FROM base as build
@@ -54,9 +54,17 @@ RUN useradd rails --create-home --shell /bin/bash && \
     chown -R rails:rails db log storage tmp
 USER rails:rails
 
+# Set root user for certain operations
+# USER root
+
+# COPY entrypoint.sh /rails/entrypoint.sh
+# RUN chmod +x /rails/entrypoint.sh
+# ENTRYPOINT ["/rails/entrypoint.sh"]
+
 # Entrypoint prepares the database.
 ENTRYPOINT ["/rails/bin/docker-entrypoint"]
+# USER rails:rails
 
 # Start the server by default, this can be overwritten at runtime
 EXPOSE 3000
-CMD ["./bin/rails", "server"]
+CMD ["bundle", "exec", "rails", "server"]

@@ -8,9 +8,9 @@ services:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
   web:
     build: .
-    command: ["entrypoint.sh"]
+    command: ["/rails/bin/docker-entrypoint", "bundle", "exec", "rails", "server", "-b", "", "-p", "3000"]
     volumes:
-      - .:/myapp
+      - .:/rails
     ports:
       - "3000:3000"
     depends_on:

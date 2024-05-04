@@ -1,10 +1,14 @@
-import Title from  '@/app/component/title';
-import styles from "./page.module.css";
+import Title from '@/app/component/title';
+import { MantineProvider } from '@mantine/core';
 
 export default function Home() {
   return (
-    <main>
-      <Title />
-    </main>
+    <>  
+      <MantineProvider theme={{ colorScheme: 'light'} as any}>
+        <main>
+          <Title />
+        </main>
+      </MantineProvider>
+    </>
   );
 }

@@ -2,7 +2,7 @@
 import { Container, Title, Text } from "@mantine/core";
 import styled from "@emotion/styled";
 
-export default function TitleComponent() {
+export default function Header() {
   return (
     <StyledContainer>
       <StyledTitle order={1}>

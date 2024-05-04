@@ -1,12 +1,12 @@
-import Title from '@/app/component/title';
-import { MantineProvider } from '@mantine/core';
+import Header from "@/app/component/Header";
+import { MantineProvider } from "@mantine/core";
 
 export default function Home() {
   return (
-    <>  
-      <MantineProvider theme={{ colorScheme: 'light'} as any}>
+    <>
+      <MantineProvider theme={{ colorScheme: "light" } as any}>
         <main>
-          <Title />
+          <Header />
         </main>
       </MantineProvider>
     </>
